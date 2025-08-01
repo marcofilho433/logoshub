@@ -1,0 +1,268 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=Comme:wght@100..900&family=Sansation:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
+
+body {
+    font-family: 'Comme', sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 20px;
+    background-image: url("/formularios/Wave\ Line.svg");
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-position: center;
+}
+
+h1 {
+    text-align: center;
+    color: #000000;
+    margin: 20px 10px 60px 10px;
+    font-size: 2.2rem;
+    font-weight: 700;
+}
+
+h2 {
+    text-align: center;
+    color: #000000;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.titulos,
+.div-text {
+    margin: 25px auto;
+    padding: 30px;
+    border: 1px solid #e0e0e0;
+    border-radius: 20px;
+    max-width: 600px;
+    background: linear-gradient(to bottom right, #ffffff, #f6f2f9);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.titulos:hover,
+.div-text:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 18px rgba(126, 49, 140, 0.15);
+}
+
+.div-text {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #000000;
+}
+
+
+.div-form-radio {
+    margin: 25px auto;
+    padding: 25px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    max-width: 600px;
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.div-form-radio:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
+}
+
+.radio-input-div {
+    display: flex;
+    align-items: center;
+    justify-content:  space-between;
+    margin-bottom: 10px;
+    padding: 0px 30px;
+    
+
+}
+
+
+label {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.input-text {
+    margin-bottom: 10px;
+    padding: 10px;
+    width: calc(60% - 22px);
+    border: none;
+    border-bottom: #00000009 solid 2px;
+    background-color: #f9f9f9;
+    transition: border-color 0.8s ease-out;
+}
+
+
+.input-text:focus {
+    border-color: #EC4A3F;
+    outline: none;
+    transition: border-color 0.8s ease-in;
+}
+
+input[type="radio"] {
+    width: 20px;
+    height: 20px;
+    border: #7E318C solid 2px;
+    cursor: pointer;
+    accent-color: #fff;
+    border-radius: 50%;
+    appearance: none;
+    -webkit-appearance: none;
+    background-color: #fff;
+    position: relative;
+    transition:
+        background-color 0.4s ease,
+        border-color 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+input[type="radio"]:hover {
+    box-shadow: 0 0 6px rgba(126, 49, 140, 0.4);
+    background-color: #f9ecf9;
+    border-color: #7E318C;
+}
+
+input[type="radio"]:checked {
+    background-color: #7E318C;
+    box-shadow: 0 0 0 4px rgba(126, 49, 140, 0.2);
+    transition: background-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* ponto branco no centro */
+input[type="radio"]::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 10px;
+    height: 10px;
+    background-color: white;
+    border-radius: 50%;
+    transform: scale(0) translate(-50%, -50%);
+    transition: transform 0.3s ease;
+    transform-origin: center;
+}
+
+input[type="radio"]:checked::after {
+    transform: scale(1) translate(-50%, -50%);
+}
+
+/* efeito visual ao marcar (pulse) */
+input[type="radio"]:checked::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    background-color: rgba(126, 49, 140, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    animation: pulse 0.5s ease-out;
+    z-index: -1;
+}
+
+@keyframes pulse {
+    0% {
+        transform: translate(-50%, -50%) scale(1.5);
+        opacity: 0.6;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0;
+    }
+}
+
+.radial-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    
+}
+
+
+.button-container {
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 600px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+button {
+    position: relative;
+    font-size: 20px;
+    font-weight: 700;
+    margin: auto;
+    padding: 12px 20%;
+    background: linear-gradient(135deg, #7E318C, #9b44af);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    width: auto;
+    overflow: hidden;
+    z-index: 1;
+    transition: 
+        background 0.4s ease,
+        transform 0.2s ease,
+        box-shadow 0.3s ease;
+    box-shadow: 0 6px 14px rgba(126, 49, 140, 0.3);
+}
+
+/* Efeito hover com brilho e leve aumento */
+button:hover {
+    transform: scale(1.04);
+    box-shadow: 0 10px 18px rgba(126, 49, 140, 0.4);
+}
+
+/* Efeito de clique */
+button:active {
+    transform: scale(0.97);
+    box-shadow: 0 4px 8px rgba(126, 49, 140, 0.2);
+}
+
+/* Firula: brilho deslizante */
+button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        rgba(255, 255, 255, 0.2),
+        rgba(255, 255, 255, 0.5),
+        rgba(255, 255, 255, 0.2)
+    );
+    transform: skewX(-20deg);
+    z-index: 2;
+    transition: none;
+}
+
+button:hover::before {
+    animation: shine 1.2s ease forwards;
+}
+
+@keyframes shine {
+    0% {
+        left: -75%;
+    }
+    100% {
+        left: 125%;
+    }
+}
+
