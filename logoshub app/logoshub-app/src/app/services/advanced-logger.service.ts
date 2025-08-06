@@ -260,15 +260,17 @@ export class AdvancedLoggerService {
 
   private storeLog(logEntry: AdvancedLogEntry) {
     try {
-      const storedLogs = JSON.parse(localStorage.getItem('advancedLogs') || '[]');
-      storedLogs.push(logEntry);
-      
-      // Keep only last 500 logs
-      if (storedLogs.length > 500) {
-        storedLogs.splice(0, storedLogs.length - 500);
+      if (typeof localStorage !== 'undefined') {
+        const storedLogs = JSON.parse(localStorage.getItem('advancedLogs') || '[]');
+        storedLogs.push(logEntry);
+        
+        // Keep only last 500 logs
+        if (storedLogs.length > 500) {
+          storedLogs.splice(0, storedLogs.length - 500);
+        }
+        
+        localStorage.setItem('advancedLogs', JSON.stringify(storedLogs));
       }
-      
-      localStorage.setItem('advancedLogs', JSON.stringify(storedLogs));
     } catch (error) {
       console.error('Failed to store advanced log:', error);
     }
@@ -354,7 +356,9 @@ export class AdvancedLoggerService {
   // Utility methods
   clearLogs() {
     this.logs = [];
-    localStorage.removeItem('advancedLogs');
+    if (typeof localStorage !== 'undefined') {
+      localStorage.removeItem('advancedLogs');
+    }
   }
 
   exportLogs(): string {

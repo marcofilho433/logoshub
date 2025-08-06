@@ -239,8 +239,8 @@ export class ErrorService {
       message: errorData.message || 'Unknown Error',
       errorCode: errorData.errorCode,
       stack: errorData.stack,
-      userAgent: navigator.userAgent,
-      url: window.location.href,
+      userAgent: typeof navigator !== 'undefined' ? navigator.userAgent : undefined,
+      url: typeof window !== 'undefined' ? window.location.href : undefined,
       userId: this.getCurrentUserId(),
       additionalData: errorData.additionalData
     };
@@ -264,7 +264,10 @@ export class ErrorService {
   private getCurrentUserId(): string | undefined {
     // Get current user ID from your auth service
     // This is a placeholder - implement based on your auth system
-    return localStorage.getItem('userId') || undefined;
+    if (typeof localStorage !== 'undefined') {
+      return localStorage.getItem('userId') || undefined;
+    }
+    return undefined;
   }
 
   private sendToLoggingService(errorLog: ErrorLog) {
@@ -285,15 +288,17 @@ export class ErrorService {
 
   private storeErrorLog(errorLog: ErrorLog) {
     try {
-      const storedLogs = JSON.parse(localStorage.getItem('errorLogs') || '[]');
-      storedLogs.push(errorLog);
-      
-      // Keep only last 100 errors
-      if (storedLogs.length > 100) {
-        storedLogs.splice(0, storedLogs.length - 100);
+      if (typeof localStorage !== 'undefined') {
+        const storedLogs = JSON.parse(localStorage.getItem('errorLogs') || '[]');
+        storedLogs.push(errorLog);
+        
+        // Keep only last 100 errors
+        if (storedLogs.length > 100) {
+          storedLogs.splice(0, storedLogs.length - 100);
+        }
+        
+        localStorage.setItem('errorLogs', JSON.stringify(storedLogs));
       }
-      
-      localStorage.setItem('errorLogs', JSON.stringify(storedLogs));
     } catch (error) {
       console.error('Failed to store error log:', error);
     }
