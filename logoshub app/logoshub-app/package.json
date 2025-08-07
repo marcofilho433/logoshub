@@ -15,7 +15,7 @@
     "format:check": "prettier --check \"src/**/*.{ts,html,scss,json}\"",
     "start": "node dist/logoshub-app/server/server.mjs",
     "ci:check": "npm run lint && npm run format:check && npm run test:ci && npm run build:prod",
-    "test:prod-build": "npm ci --omit=dev && npm run build:prod"
+    "test:prod-build": "npm ci --omit=dev --legacy-peer-deps && npm run build:prod"
   },
   "prettier": {
     "overrides": [
@@ -38,6 +38,7 @@
     "@angular/platform-server": "^20.1.0",
     "@angular/router": "^20.1.0",
     "@angular/ssr": "^20.1.4",
+    "@angular-devkit/build-angular": "^20.1.5",
     "chart.js": "^4.5.0",
     "express": "^5.1.0",
     "firebase": "^11.10.0",
@@ -45,14 +46,15 @@
     "tslib": "^2.3.0"
   },
   "devDependencies": {
-    "@angular/build": "^20.1.4",
-    "@angular/cli": "^20.1.4",
-    "@angular/compiler-cli": "^20.1.0",
+    "@angular-devkit/build-angular": "^20.1.5",
     "@angular-eslint/builder": "^20.0.0",
     "@angular-eslint/eslint-plugin": "^20.0.0",
     "@angular-eslint/eslint-plugin-template": "^20.0.0",
     "@angular-eslint/schematics": "^20.0.0",
     "@angular-eslint/template-parser": "^20.0.0",
+    "@angular/build": "^20.1.4",
+    "@angular/cli": "^20.1.4",
+    "@angular/compiler-cli": "^20.1.0",
     "@types/express": "^5.0.1",
     "@types/jasmine": "~5.1.0",
     "@types/node": "^20.17.19",

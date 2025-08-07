@@ -26,7 +26,7 @@ jobs:
     - name: Instalar dependências (produção)
       run: |
         cd logoshub-app
-        npm ci --omit=dev
+        npm ci --omit=dev --legacy-peer-deps
         
     - name: Build de produção
       run: |
@@ -61,7 +61,7 @@ jobs:
     - name: Instalar dependências (produção)
       run: |
         cd logoshub-app
-        npm ci --omit=dev
+        npm ci --omit=dev --legacy-peer-deps
         
     - name: Download artefatos de produção
       uses: actions/download-artifact@v4
