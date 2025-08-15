@@ -32,6 +32,7 @@
     "@ngrx/effects": "^20.0.0",
     "@ngrx/store": "^20.0.0",
     "@ngrx/store-devtools": "^20.0.0",
+    "@supabase/supabase-js": "^2.55.0",
     "@tailwindcss/postcss": "^4.1.11",
     "express": "^5.1.0",
     "flowbite": "^3.1.2",
